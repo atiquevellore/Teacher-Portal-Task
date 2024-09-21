@@ -1,0 +1,27 @@
+<h1 class="text-center mb-4">Welcome to Teacher Portal</h1>
+
+<div class="container">
+  <div class="alert alert-info text-center" role="alert">
+    Teacher Portal is a comprehensive application designed to facilitate basic CRUD operations for managing student records.
+  </div>
+
+  <p class="text-center">
+    With this portal, you can:
+  </p>
+
+  <ul class="list-group list-group-flush mb-4">
+    <li class="list-group-item">✔️ Create new student profiles</li>
+    <li class="list-group-item">✔️ Read and view student details</li>
+    <li class="list-group-item">✔️ Update existing student information</li>
+    <li class="list-group-item">✔️ Delete student records</li>
+  </ul>
+
+
+  <div class="text-center">
+    <% if user_signed_in? %>
+    <%= link_to 'Get Started', students_path, class: 'btn btn-primary' %>
+    <% else %>
+    <%= link_to 'Get Started', new_user_session_path, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

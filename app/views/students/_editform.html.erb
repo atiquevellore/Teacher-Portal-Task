@@ -1,0 +1,37 @@
+<%= form_with(model: student, local: true, html: { class: "p-4 border rounded shadow-sm bg-light", style: "max-width: 500px;" }) do |form| %>
+
+  <% if student.errors.any? %>
+    <div class="alert alert-danger">
+      <h5><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h5>
+      <ul>
+        <% student.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Name Field -->
+  <div class="form-group mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter student name" %>
+  </div>
+
+  <!-- Subject Field -->
+  <div class="form-group mb-3">
+    <%= form.label :subject, class: "form-label" %>
+    <%= form.text_field :subject, class: "form-control", placeholder: "Enter subject name" %>
+  </div>
+
+  <!-- Marks Field -->
+  <div class="form-group mb-3">
+    <%= form.label :mark, "Marks", class: "form-label" %>
+    <%= form.number_field :mark, class: "form-control", placeholder: "Enter marks" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="form-group">
+    <%= form.submit "Save Student", class: "btn btn-primary w-100" %>
+  </div>
+
+<% end %>
