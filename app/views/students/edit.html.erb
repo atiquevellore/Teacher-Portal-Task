@@ -1,0 +1,10 @@
+<h1>Editing student</h1>
+
+<%= render "editform", student: @student %>
+
+<br>
+
+<div>
+  <%= link_to "Show this student", @student , class: "btn btn-primary"%> |
+  <%= link_to "Back to students", students_path, class: "btn btn-primary" %>
+</div>

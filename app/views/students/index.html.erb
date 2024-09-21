@@ -1,0 +1,77 @@
+<h1>Students</h1>
+
+<div id="students">
+  <table class="table table-info table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Mark</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr >
+          <td>
+          <%= student.name %>
+          </td>
+          <td><%= student.subject %></td>
+          <td><%= student.mark %></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <%= link_to "Edit", edit_student_path(student), class: "dropdown-item" %>
+                <%= link_to "Delete", student, method: :delete,class: "dropdown-item", turbo_method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %></td>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+
+
+<%= link_to "Add", '#', class: 'btn btn-secondary', id: 'show-form-btn', data: { bs_toggle: "modal", bs_target: "#staticBackdrop" } %>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">New Student</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <%= render 'form', student: Student.new %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Turbo Load Event Listener -->
+<script>
+  document.addEventListener('turbo:load', () => {
+    const studentModal = document.getElementById('staticBackdrop');
+
+    if (studentModal) {
+      studentModal.addEventListener('shown.bs.modal', function () {
+        const form = studentModal.querySelector('form');
+        if (form) form.reset(); // Reset the form inputs
+      });
+    }
+
+    // Initialize Bootstrap Dropdown after Turbo Load
+    var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+    var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+      return new bootstrap.Dropdown(dropdownToggleEl)
+    })
+  });
+</script>
