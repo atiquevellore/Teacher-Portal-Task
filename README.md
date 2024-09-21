@@ -53,7 +53,11 @@ This README file contains instructions for setting up, configuring, and running 
   ```
 
 ## How to Run the Test Suite
-
+- Run migrations
+  ```bash
+  rake db:test:prepare
+  ```
+  
 - Run tests using `RSpec`:
   ```bash
   rspec
@@ -61,5 +65,5 @@ This README file contains instructions for setting up, configuring, and running 
 
 - You can also run individual tests by specifying the path:
   ```bash
-  rspec spec/models/user_spec.rb
-  ```s
+  rspec spec/models/students_controller_spec.rb
+  ```
