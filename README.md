@@ -1,24 +1,65 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Teacher Portal
 
-Things you may want to cover:
+This README file contains instructions for setting up, configuring, and running the Teacher Portal application.
 
-* Ruby version
+## Requirements
 
-* System dependencies
+### Ruby Version
+- **Ruby version:** `3.0.2` (Ensure this version is installed on your system)
+- **Rails version:** `7.1.4`
 
-* Configuration
+### System Dependencies
+- **Database**: SQLite3, which comes pre-configured with Rails.
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### Configuration
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/teacher-portal.git
+   cd teacher-portal
+   ```
 
-* How to run the test suite
+2. Install required gems:
+   ```bash
+   bundle install
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database Setup
 
-* Deployment instructions
+### Database Creation
+- For SQLite3, run the following to create the database:
+  ```bash
+  rails db:create
+  ```
 
-* ...
+### Database Initialization
+- Run migrations to set up your schema:
+  ```bash
+  rails db:migrate
+  ```
+
+- Optionally, seed the database with initial data:
+  ```bash
+  rails db:seed
+  ```
+
+## Running the Server
+
+- To start the Rails server, run:
+  ```bash
+  rails s
+  ```
+
+## How to Run the Test Suite
+
+- Run tests using `RSpec`:
+  ```bash
+  rspec
+  ```
+
+- You can also run individual tests by specifying the path:
+  ```bash
+  rspec spec/models/user_spec.rb
+  ```s
